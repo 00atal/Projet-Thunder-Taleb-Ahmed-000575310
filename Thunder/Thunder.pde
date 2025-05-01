@@ -5,4 +5,5 @@ void setup() {
 void draw() {
   background(240); // Couleur de fond
   fill(195);
+  
 }
