@@ -9,5 +9,3 @@ void draw() {
   background(255);
   bob.display();
 }
-
-// === Classe Bob ===
