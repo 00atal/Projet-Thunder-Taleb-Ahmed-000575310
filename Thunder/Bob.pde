@@ -47,7 +47,8 @@ class Bob {
     popMatrix();
   }
   
-  void move(){
-  
+  void move(float dx){
+    x += dx;
+    x = constrain(x, s / 2, width - s / 2);
   }
 }
