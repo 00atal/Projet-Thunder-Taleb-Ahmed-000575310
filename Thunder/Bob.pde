@@ -49,6 +49,12 @@ class Bob {
     popMatrix();
   }
   
+  void changeSpeed(float deltaSpeed) {
+    speed += deltaSpeed;
+  }
+
+
+
   void move(float dx){
     x += dx;
     x = constrain(x, s / 2, width - s / 2);

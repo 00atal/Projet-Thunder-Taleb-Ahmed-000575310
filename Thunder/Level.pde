@@ -1,16 +1,21 @@
 class Level{
-  int level;
+  float level;
   float speed;
   
-  Level (float bobSpeed){
-    this.bobSpeed=bobSpeed;
+  Level (float startingLevel){
+    level = startingLevel;
+    speed = level * 2;
   }
   
   void setSpeed(float newBobSpeed){
-    this.bobSpeed=newBobSpeed;
+    this.speed=newBobSpeed;
   }
   
   float getSpeed(){
-    return this.bobSpeed;
+    return this.speed;
+  }
+  void increaseLevel() {
+    level++;
+    speed = level * 2; 
   }
 }
