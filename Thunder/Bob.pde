@@ -62,7 +62,11 @@ class Bob {
       speed = 0;
     }
   }
-
+  void limitPosition() {
+    if (x <= s / 2 || x >= width - s / 2) {
+      speed = 0;
+    }
+  }
   void move(float dx){
     x += dx;
     x = constrain(x, s / 2, width - s / 2);
