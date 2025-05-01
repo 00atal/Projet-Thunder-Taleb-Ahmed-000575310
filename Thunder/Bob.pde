@@ -1,9 +1,9 @@
 class Bob {
-  float x, y ;
-  color c ;
-  float s ;
-  int leg_position ;
-  float speed;
+  private float x, y ;
+  private color c ;
+  private float s ;
+  private int leg_position ;
+  private float speed;
 
     Bob (float x, float y, color c, float s,int leg_position, float speed ){
     this.x=x;
@@ -13,8 +13,8 @@ class Bob {
     this.leg_position=leg_position;
     this.speed=speed;
     }
+    
    void display() {
-
     pushMatrix();
     translate(x, y); // Center on Bob's position
     

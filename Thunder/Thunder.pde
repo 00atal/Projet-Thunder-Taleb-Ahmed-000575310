@@ -1,6 +1,7 @@
 Bob bob;
 Level level;
 boolean firstMove = false;
+
 void setup() {
   size(800, 600); 
  //float x, float y, color c, float s,int leg_position, float speed 
@@ -29,8 +30,8 @@ if (keyPressed) {
     if (firstMove) {
       bob.slowDown();
     } else {
-      bob.x = width / 2;
-      bob.speed = 0;
+      bob.setX(width / 2);
+      bob.setSpeed(0);
     }
   }
 
