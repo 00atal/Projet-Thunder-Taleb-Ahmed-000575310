@@ -1,8 +1,9 @@
 Bob bob;
 
 void setup() {
-  size(600, 400); 
-  bob = new Bob(width/2, height/2, color(0, 102, 204), 100, 0, 1);
+  size(800, 600); 
+ //float x, float y, color c, float s,int leg_position, float speed 
+  bob = new Bob(width/2, height-100, color(0, 102, 204), 50, 10, -20);
 }
 
 void draw() {

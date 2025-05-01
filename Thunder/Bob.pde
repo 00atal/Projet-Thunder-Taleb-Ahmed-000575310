@@ -1,4 +1,4 @@
-class Bob{
+class Bob {
   float x, y ;
   color c ;
   float s ;
@@ -9,6 +9,7 @@ class Bob{
     this.x=x;
     this.y=y;
     this.c=c;
+    this.s=s;
     this.leg_position=leg_position;
     this.speed=speed;
     }
