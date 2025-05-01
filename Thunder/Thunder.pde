@@ -1,9 +1,12 @@
 Bob bob;
-
+Level level;
 void setup() {
   size(800, 600); 
  //float x, float y, color c, float s,int leg_position, float speed 
   bob = new Bob(width/2, height-100, color(255, 20, 0), 50, 10, -20);
+  
+  
+  level= new Level(10);
 }
 
 void draw() {
@@ -15,9 +18,9 @@ void draw() {
   bob.display();
   if (keyPressed) {
     if (keyCode == LEFT) {
-      bob.move(-1);
+      bob.move(-level.getSpeed());
     } else if (keyCode == RIGHT) {
-      bob.move(1);
+      bob.move(level.getSpeed());
     }
   }  
 

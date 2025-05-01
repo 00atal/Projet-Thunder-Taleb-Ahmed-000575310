@@ -1,6 +1,6 @@
 class Level{
-  float bobSpeed;
-  
+  int level;
+  float speed;
   
   Level (float bobSpeed){
     this.bobSpeed=bobSpeed;
