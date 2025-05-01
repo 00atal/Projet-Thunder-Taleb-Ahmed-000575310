@@ -71,6 +71,54 @@ class Bob {
     x += dx;
     x = constrain(x, s / 2, width - s / 2);
   }
-  
-  
+   
+  // Getters
+  float getX() {
+    return x;
+  }
+
+  float getY() {
+    return y;
+  }
+
+  color getColor() {
+    return c;
+  }
+
+  float getSize() {
+    return s;
+  }
+
+  int getLegPosition() {
+    return leg_position;
+  }
+
+  float getSpeed() {
+    return speed;
+  }
+
+  // Setters
+  void setX(float x) {
+    this.x = x;
+  }
+
+  void setY(float y) {
+    this.y = y;
+  }
+
+  void setColor(color c) {
+    this.c = c;
+  }
+
+  void setSize(float s) {
+    this.s = s;
+  }
+
+  void setLegPosition(int leg_position) {
+    this.leg_position = leg_position;
+  }
+
+  void setSpeed(float speed) {
+    this.speed = speed;
+  }
 }
