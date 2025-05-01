@@ -52,8 +52,16 @@ class Bob {
   void changeSpeed(float deltaSpeed) {
     speed += deltaSpeed;
   }
-
-
+  void slowDown() {
+    if (speed > 0) {
+      speed *= 0.98; 
+    } else if (speed < 0) {
+      speed *= 0.98;
+    }
+    if (abs(speed) < 0.1) {
+      speed = 0;
+    }
+  }
 
   void move(float dx){
     x += dx;
