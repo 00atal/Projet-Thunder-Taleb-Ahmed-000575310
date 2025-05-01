@@ -24,7 +24,7 @@ class Bob {
     
     // legs
     fill(0); // pants color
-    float leg_movement;
+    float leg_movement=0;
     if (keyPressed) {
       if (keyCode == LEFT || keyCode == RIGHT){
       leg_position += abs(speed);
