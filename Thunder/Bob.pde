@@ -26,8 +26,10 @@ class Bob {
     fill(0); // pants color
     float leg_movement;
     if (keyPressed) {
+      if (keyCode == LEFT || keyCode == RIGHT){
       leg_position += abs(speed);
       leg_movement = sin(leg_position * 0.1) * s * speed * 0.03; // Further reduced speed multiplier
+      }
     } else {
       leg_position = 0;
       leg_movement = 0;
@@ -51,4 +53,6 @@ class Bob {
     x += dx;
     x = constrain(x, s / 2, width - s / 2);
   }
+  
+  
 }

@@ -13,6 +13,14 @@ void draw() {
   rect(0, height - 65, width, 65);
   drawClouds();
   bob.display();
+  if (keyPressed) {
+    if (keyCode == LEFT) {
+      bob.move(-1);
+    } else if (keyCode == RIGHT) {
+      bob.move(1);
+    }
+  }  
+
 }
 
 void drawClouds() {
