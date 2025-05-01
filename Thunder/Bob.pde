@@ -46,4 +46,8 @@ class Bob {
 
     popMatrix();
   }
+  
+  void move(){
+  
+  }
 }
