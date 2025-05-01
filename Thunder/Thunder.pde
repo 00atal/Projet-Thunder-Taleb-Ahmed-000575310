@@ -7,9 +7,17 @@ void setup() {
 }
 
 void draw() {
-  background(100);
-  fill(0, 150, 0); // Vert
+  background(169, 169, 169);
+  fill(0, 150, 0); 
   noStroke();
   rect(0, height - 65, width, 65);
+  drawClouds();
   bob.display();
+}
+
+void drawClouds() {
+  fill(100); 
+  noStroke();
+  ellipse(150, 100, 120, 60); 
+
 }
