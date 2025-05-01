@@ -24,7 +24,7 @@ class Bob {
     
     // legs
     fill(0); // pants color
-    float leg_movement=0;
+    float leg_movement=25;
     if (keyPressed) {
       if (keyCode == LEFT || keyCode == RIGHT){
       leg_position += abs(speed);
@@ -54,7 +54,7 @@ class Bob {
   }
   void slowDown() {
     if (speed > 0) {
-      speed *= 0.98; 
+      speed *= 0.94; 
     } else if (speed < 0) {
       speed *= 0.98;
     }

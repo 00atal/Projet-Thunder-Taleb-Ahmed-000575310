@@ -16,14 +16,18 @@ void draw() {
   rect(0, height - 65, width, 65);
   drawClouds();
   bob.display();
-  if (keyPressed) {
+if (keyPressed) {
     if (keyCode == LEFT) {
-      bob.move(-level.getSpeed());
+      bob.changeSpeed(-0.5);
     } else if (keyCode == RIGHT) {
-      bob.move(level.getSpeed());
+      bob.changeSpeed(0.5);
     }
-  }  
+  } else {
+    bob.slowDown();
+  }
 
+  bob.move(bob.speed);
+  bob.limitPosition();
 }
 
 void drawClouds() {
