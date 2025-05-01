@@ -39,7 +39,6 @@ if (keyPressed) {
   
   
   if (strike != null) {
-    strike = new Strike(random(width), 0, 10); 
     strike.update();
     strike.display();
 
@@ -47,7 +46,14 @@ if (keyPressed) {
       strike = null;
       delayBeforeNextStrike = int(random(30, 90)); 
     }
-  } 
+  } else {
+    if (delayBeforeNextStrike > 0) {
+      delayBeforeNextStrike--;
+    } else if (random(1) < 0.05) {
+      strike = new Strike(random(width), 0, 10); 
+    }
+  }
+
 }
 
 void drawClouds() {
