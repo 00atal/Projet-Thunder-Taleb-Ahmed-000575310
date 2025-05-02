@@ -30,18 +30,17 @@ void draw() {
   if (strike != null) {
     strike.update();
     strike.display();
-
-    if (strike.finished()) {
-      strike = null;
-      delayBeforeNextStrike = int(random(30, 90)); 
-    }
-  } else {
-    if (delayBeforeNextStrike > 0) {
-      delayBeforeNextStrike--;
-    } else if (random(1) < 0.05) {
-      strike = new Strike(random(width), 0, 10); 
-    }
+if (strike.hits(bob)) {
+    score = 0; // Reset si Bob est touché
+    strike = null;
+    delayBeforeNextStrike = 60; // Par exemple, délai avant le prochain éclair
+  } else if (strike.finished()) {
+    score++; // Incrémenter si l'éclair a fini sans toucher Bob
+    strike = null;
+    delayBeforeNextStrike = 60;
   }
+}
+
   
   if (strike != null && strike.hits(bob)) {
     fill(255);
