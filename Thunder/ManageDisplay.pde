@@ -13,11 +13,10 @@ class ManageDisplay {
     bgColor = color(169, 169, 169);
   }
 
-  void drawScene(Bob bob, ScoreManager scoreManager) {
+  void drawScene( ScoreManager scoreManager) {
     background(bgColor);
     drawGround();
     drawClouds();
-    bob.display();
     scoreManager.display(); 
   }
 

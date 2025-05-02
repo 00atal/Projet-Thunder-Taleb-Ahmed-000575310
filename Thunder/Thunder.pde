@@ -1,36 +1,28 @@
 Bob bob;
 Strike strike= null;
 boolean firstMove = false;
-ManageDisplay diplayManager;
+ManageDisplay displayManager;
+ScoreManager scoreManager;
 int delayBeforeNextStrike=0;
 int score = 0;
 int highScore =0;
 
 void setup() {
   size(800, 600); 
- //float x, float y, color c, float s,int leg_position, float speed 
   bob = new Bob(width/2, height-100, color(255, 20, 0), 50, 10, -20);
-  diplayManager = new ManageDisplay();
-  
+  displayManager = new ManageDisplay();
+  scoreManager = new ScoreManager();
 }
 
 void draw() {
-  background(169, 169, 169);
-  fill(0, 150, 0); 
-  noStroke();
-  rect(0, height - 65, width, 65);
-diplayManager.drawClouds();
+  displayManager.drawScene(scoreManager);
+  displayManager.drawClouds();
   bob.display();
-  fill(255);
-  textSize(24);
-  text("Score : " + score, 10, 30);
-  text("High Score : " + highScore, 10, 60);
   bob.moveManage();
 
   bob.move(bob.speed);
   bob.limitPosition();
-  
-  
+    
   if (strike != null) {
     strike.update();
     strike.display();
