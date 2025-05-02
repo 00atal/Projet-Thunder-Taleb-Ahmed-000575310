@@ -50,4 +50,4 @@ class Strike {
     boolean hits(Bob bob) {
         return (dist(bob.x, bob.y, current_x, current_y) < 0.7*bob.s) || (nextStrike != null && nextStrike.hits(bob));
     }
-}
+  }

@@ -130,7 +130,7 @@ class Bob {
       bob.changeSpeed(0.5);
       firstMove = true;
     }
-  } else {
+    } else {
     if (firstMove) {
       bob.slowDown();
     } else {

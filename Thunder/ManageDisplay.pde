@@ -13,10 +13,11 @@ class ManageDisplay {
     bgColor = color(169, 169, 169);
   }
 
-  void drawScene( ScoreManager scoreManager) {
+  void drawScene(Bob bob, ManageScore scoreManager) {
     background(bgColor);
     drawGround();
     drawClouds();
+    bob.display();
     scoreManager.display(); 
   }
 
@@ -38,5 +39,12 @@ class ManageDisplay {
     ellipse(500, 0, 350, 150);
     ellipse(700, 0, 250, 165);
     ellipse(400, 80, 150, 65);
+  }
+  
+  void displayScore(int score, int highScore) {
+    fill(255);
+    textSize(24);
+    text("Score : " + score, 10, 30);
+    text("High Score : " + highScore, 10, 60);
   }
 }

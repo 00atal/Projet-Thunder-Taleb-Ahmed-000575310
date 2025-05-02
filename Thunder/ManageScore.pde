@@ -1,8 +1,8 @@
-class ScoreManager {
+class ManageScore {
   int score;
   int highScore;
 
-  ScoreManager() {
+  ManageScore() {
     score = 0;
     highScore = 0;
   }
@@ -16,6 +16,14 @@ class ScoreManager {
     if (score > highScore) {
       highScore = score;
     }
+  }
+  
+  int getScore(){
+    return score;
+  }
+  
+  int getHighScore(){
+    return highScore;
   }
 
   void display() {
