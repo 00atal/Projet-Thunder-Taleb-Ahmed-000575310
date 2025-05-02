@@ -3,6 +3,7 @@ Strike strike= null;
 boolean firstMove = false;
 int delayBeforeNextStrike=0;
 int score = 0;
+int highScore =0;
 
 void setup() {
   size(800, 600); 
@@ -19,8 +20,9 @@ void draw() {
   drawClouds();
   bob.display();
   fill(255);
-    textSize(24);
-    text("Score : " + score, 10, 30);
+  textSize(24);
+  text("Score : " + score, 10, 30);
+  text("High Score : " + highScore, 10, 60);
   bob.moveManage();
 
   bob.move(bob.speed);
@@ -30,14 +32,23 @@ void draw() {
   if (strike != null) {
     strike.update();
     strike.display();
-if (strike.hits(bob)) {
-    score = 0; // Reset si Bob est touché
+  if (strike.hits(bob)) {
+    score = 0; 
     strike = null;
-    delayBeforeNextStrike = 60; // Par exemple, délai avant le prochain éclair
+    delayBeforeNextStrike = 60; 
   } else if (strike.finished()) {
-    score++; // Incrémenter si l'éclair a fini sans toucher Bob
+    score++; 
+    if (score > highScore) {
+      highScore = score; 
+    }
     strike = null;
     delayBeforeNextStrike = 60;
+  }
+  }else {
+  if (delayBeforeNextStrike > 0) {
+    delayBeforeNextStrike--;
+  } else if (random(1) < 0.05) {
+    strike = new Strike(random(width), 0, 10);
   }
 }
 
