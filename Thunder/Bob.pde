@@ -121,4 +121,22 @@ class Bob {
   void setSpeed(float speed) {
     this.speed = speed;
   }
+  void moveManage(){
+    if (keyPressed) {
+    if (keyCode == LEFT) {
+      bob.changeSpeed(-0.5);
+      firstMove = true;
+    } else if (keyCode == RIGHT) {
+      bob.changeSpeed(0.5);
+      firstMove = true;
+    }
+  } else {
+    if (firstMove) {
+      bob.slowDown();
+    } else {
+      bob.setX(width / 2);
+      bob.setSpeed(0);
+    }
+  }
+  }
 }

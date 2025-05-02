@@ -2,6 +2,7 @@ Bob bob;
 Strike strike= null;
 boolean firstMove = false;
 int delayBeforeNextStrike=0;
+int score = 0;
 
 void setup() {
   size(800, 600); 
@@ -17,22 +18,10 @@ void draw() {
   rect(0, height - 65, width, 65);
   drawClouds();
   bob.display();
-if (keyPressed) {
-    if (keyCode == LEFT) {
-      bob.changeSpeed(-0.5);
-      firstMove = true;
-    } else if (keyCode == RIGHT) {
-      bob.changeSpeed(0.5);
-      firstMove = true;
-    }
-  } else {
-    if (firstMove) {
-      bob.slowDown();
-    } else {
-      bob.setX(width / 2);
-      bob.setSpeed(0);
-    }
-  }
+  fill(255);
+    textSize(24);
+    text("Score : " + score, 10, 30);
+  bob.moveManage();
 
   bob.move(bob.speed);
   bob.limitPosition();
@@ -53,7 +42,13 @@ if (keyPressed) {
       strike = new Strike(random(width), 0, 10); 
     }
   }
-
+  
+  if (strike != null && strike.hits(bob)) {
+    fill(255);
+    textSize(24);
+    text("Score : " + score, 10, 30);
+    println("Bob is hit by the strike !");
+  }
 }
 
 void drawClouds() {
