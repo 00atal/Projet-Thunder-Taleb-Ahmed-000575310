@@ -5,7 +5,6 @@ Strike strike= null;
 boolean firstMove = false;
 ManageDisplay displayManager;
 ManageScore scoreManager;
-int delayBeforeNextStrike=0;
 
 void setup() {
   size(800, 600); 
@@ -16,14 +15,9 @@ void setup() {
 }
 
 void draw() {
-  displayManager.drawClouds();
-  displayManager.drawScene(bob,scoreManager);
-  bob.moveManage();
-  bob.move(bob.speed);
-  bob.limitPosition();
-    
-manageStrike.manageStrike(bob, scoreManager);
-  
+  displayManager.displayMain();
+  bob.bobMain();
+  manageStrike.manageStrike(bob, scoreManager);
   if (strike != null && strike.hits(bob)) {
     displayManager.displayScore(scoreManager.getScore(), scoreManager.getHighScore());
   }

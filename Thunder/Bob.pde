@@ -139,4 +139,9 @@ class Bob {
     }
   }
   }
+  void bobMain(){
+    moveManage();
+    move(bob.speed);
+    limitPosition();
+  }
 }

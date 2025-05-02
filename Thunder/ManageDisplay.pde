@@ -47,4 +47,9 @@ class ManageDisplay {
     text("Score : " + score, 10, 30);
     text("High Score : " + highScore, 10, 60);
   }
+  
+  void displayMain(){
+    drawClouds();
+    drawScene(bob,scoreManager);
+  }
 }
