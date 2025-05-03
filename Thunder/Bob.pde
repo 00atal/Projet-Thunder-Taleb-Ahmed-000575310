@@ -5,7 +5,6 @@ class Bob {
   private int leg_position ;
   private float speed;
   Level level;
-  float deceleration = 0.94;  // Valeur par défaut
 
     Bob (float x, float y, color c, float s,int leg_position, float speed){
     this.x=x;
@@ -14,7 +13,6 @@ class Bob {
     this.s=s;
     this.leg_position=leg_position;
     this.speed=speed;
-    this.level= new Level(1);
     }
     
    void display() {
@@ -57,15 +55,13 @@ class Bob {
   }
 
 
-  void setDeceleration(float d) {
-    deceleration = d;
-  }
+
 
   void slowDown() {
   if (speed > 0) {
-    speed *= deceleration;
+    speed *= 0.98;
   } else if (speed < 0) {
-    speed *= deceleration;
+    speed *= 0.98;
   }
   if (abs(speed) < 0.1) {
     speed = 0;
@@ -82,74 +78,24 @@ class Bob {
     x = constrain(x, s / 2, width - s / 2);
   }
    
-  // Getters
-  float getX() {
-    return x;
-  }
-
-  float getY() {
-    return y;
-  }
-
-  color getColor() {
-    return c;
-  }
-
-  float getSize() {
-    return s;
-  }
-
-  int getLegPosition() {
-    return leg_position;
-  }
-
-  float getSpeed() {
-    return speed;
-  }
-
-  // Setters
-  void setX(float x) {
-    this.x = x;
-  }
-
-  void setY(float y) {
-    this.y = y;
-  }
-
-  void setColor(color c) {
-    this.c = c;
-  }
-
-  void setSize(float s) {
-    this.s = s;
-  }
-
-  void setLegPosition(int leg_position) {
-    this.leg_position = leg_position;
-  }
-
-  void setSpeed(float speed) {
-    this.speed = speed;
-  }
-  
   void setLevel(Level lvl){
     level=lvl;
   }
   void moveManage(){
     if (keyPressed) {
     if (keyCode == LEFT) {
-      bob.changeSpeed(-0.5);
+      this.changeSpeed(-0.5);
       firstMove = true;
     } else if (keyCode == RIGHT) {
-      bob.changeSpeed(0.5);
+      this.changeSpeed(0.5);
       firstMove = true;
     }
     } else {
     if (firstMove) {
-      bob.slowDown();
+      this.slowDown();
     } else {
-      bob.setX(width / 2);
-      bob.setSpeed(0);
+      this.x=width / 2;
+      this.speed=0;
     }
   }
   }
