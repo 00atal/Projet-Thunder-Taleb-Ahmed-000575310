@@ -8,46 +8,40 @@ class Level{
   
   Level (int startingLevel){
     level = startingLevel;
-    setLevelProperties();
+    setLevelProperties(1);
   }
   
-  void setLevelProperties() {
-    if (level == 1) {
-      bobSpeed = 5;
-      strikeSpeed = 2;
+  void setLevelProperties(int lvl) {
+    if (lvl == 1) {
+      bobSpeed = 9;
+      strikeSpeed = 10;
       maxStrikes = 1;
-      bobDeceleration = 0.98;  // Ralentissement plus rapide
-    } else if (level == 2) {
+      bobDeceleration = 0.90;  // Ralentissement plus rapide
+      level=lvl;
+    } else if (lvl == 2) {
       bobSpeed = 7;
-      strikeSpeed = 3;
+      strikeSpeed = 15;
       maxStrikes = 2;
       bobDeceleration = 0.95;  // Ralentissement plus lent
-    } else if (level == 3) {
+      level=lvl;
+    } else if (lvl == 3) {
       bobSpeed = 10;
-      strikeSpeed = 4;
+      strikeSpeed = 20;
       maxStrikes = 3;
-      bobDeceleration = 0.92;  // Ralentissement encore plus lent
+      bobDeceleration = 0.99;  // Ralentissement encore plus lent
+      level=lvl;
     }
   }
   
   void setSpeed(int newBobSpeed){
     this.speed=newBobSpeed;
   }
+    float getBobSpeed(){
+    return this.bobSpeed;
+  }
   
   float getSpeed(){
     return this.speed;
-  }
-  void increaseLevel() {
-    if (level < 3) {  // Ne pas dépasser le niveau 3
-      level++;
-      setLevelProperties();  // Met à jour les propriétés du niveau suivant
-    }
-  }
-  void decreaseLevel() {
-    if (level > 1) {  // Ne pas descendre en dessous du niveau 1
-      level--;
-      setLevelProperties();  // Met à jour les propriétés du niveau précédent
-    }
   }
 
   // Méthode pour obtenir la vitesse des éclairs

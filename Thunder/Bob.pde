@@ -4,14 +4,17 @@ class Bob {
   private float s ;
   private int leg_position ;
   private float speed;
+  Level level;
+  float deceleration = 0.94;  // Valeur par défaut
 
-    Bob (float x, float y, color c, float s,int leg_position, float speed ){
+    Bob (float x, float y, color c, float s,int leg_position, float speed){
     this.x=x;
     this.y=y;
     this.c=c;
     this.s=s;
     this.leg_position=leg_position;
     this.speed=speed;
+    this.level= new Level(1);
     }
     
    void display() {
@@ -52,16 +55,23 @@ class Bob {
   void changeSpeed(float deltaSpeed) {
     speed += deltaSpeed;
   }
-  void slowDown() {
-    if (speed > 0) {
-      speed *= 0.94; 
-    } else if (speed < 0) {
-      speed *= 0.98;
-    }
-    if (abs(speed) < 0.1) {
-      speed = 0;
-    }
+
+
+  void setDeceleration(float d) {
+    deceleration = d;
   }
+
+  void slowDown() {
+  if (speed > 0) {
+    speed *= deceleration;
+  } else if (speed < 0) {
+    speed *= deceleration;
+  }
+  if (abs(speed) < 0.1) {
+    speed = 0;
+  }
+  }
+
   void limitPosition() {
     if (x <= s / 2 || x >= width - s / 2) {
       speed = 0;
@@ -120,6 +130,10 @@ class Bob {
 
   void setSpeed(float speed) {
     this.speed = speed;
+  }
+  
+  void setLevel(Level lvl){
+    level=lvl;
   }
   void moveManage(){
     if (keyPressed) {
