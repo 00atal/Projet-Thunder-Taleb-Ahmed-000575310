@@ -2,7 +2,7 @@ class ManageStrike {
   Strike strike ;
   int delayBeforeNextStrike ;
   Level level;
-  //Constructeur par defaut invisible car hérité de la class parent Object
+  
   ManageStrike (Level level){
    strike = null;
    delayBeforeNextStrike = 0;

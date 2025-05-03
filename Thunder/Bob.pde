@@ -4,6 +4,7 @@ class Bob {
   private float s ;
   private int leg_position ;
   private float speed;
+  boolean firstMove = false;
   Level level;
 
     Bob (float x, float y, color c, float s,int leg_position, float speed){
@@ -54,9 +55,6 @@ class Bob {
     speed += deltaSpeed;
   }
 
-
-
-
   void slowDown() {
   if (speed > 0) {
     speed *= 0.98;
@@ -99,9 +97,5 @@ class Bob {
     }
   }
   }
-  void bobMain(){
-    moveManage();
-    move(bob.speed);
-    limitPosition();
-  }
+
 }
