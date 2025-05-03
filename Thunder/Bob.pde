@@ -4,8 +4,8 @@ class Bob {
   private float s ;
   private int leg_position ;
   private float speed;
-  boolean firstMove = false;
   Level level;
+  boolean firstMove=false;
 
     Bob (float x, float y, color c, float s,int leg_position, float speed){
     this.x=x;
@@ -54,6 +54,9 @@ class Bob {
   void changeSpeed(float deltaSpeed) {
     speed += deltaSpeed;
   }
+
+
+
 
   void slowDown() {
   if (speed > 0) {
