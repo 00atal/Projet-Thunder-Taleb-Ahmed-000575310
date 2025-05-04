@@ -4,8 +4,8 @@ class Bob {
   private float s ;
   private int leg_position ;
   private float speed;
-  Level level;
   boolean firstMove=false;
+  float slowSpeed=0.98;
 
     Bob (float x, float y, color c, float s,int leg_position, float speed){
     this.x=x;
@@ -55,9 +55,6 @@ class Bob {
     speed += deltaSpeed;
   }
 
-
-
-
   void slowDown() {
   if (speed > 0) {
     speed *= 0.98;
@@ -78,10 +75,7 @@ class Bob {
     x += dx;
     x = constrain(x, s / 2, width - s / 2);
   }
-   
-  void setLevel(Level lvl){
-    level=lvl;
-  }
+    
   void moveManage(){
     if (keyPressed) {
     if (keyCode == LEFT) {
@@ -100,5 +94,10 @@ class Bob {
     }
   }
   }
-
+void reset() {
+  x = width / 2;
+  y = height - 100; // ou une autre valeur adaptée à ta scène
+  speed = 0;
+  firstMove = false;
+}
 }

@@ -47,4 +47,10 @@ class ManageDisplay {
     text("Score : " + score, 10, 30);
     text("High Score : " + highScore, 10, 60);
   }
+  
+  void displayLevelName(String levelName) {
+    fill(255);
+    textSize(24);
+    text("Level: " + levelName, 10, 90); // Affiche le nom du niveau au centre
+  }
 }

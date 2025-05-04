@@ -1,13 +1,12 @@
 class ManageStrike {
   Strike strike ;
   int delayBeforeNextStrike ;
-  Level level;
-  //Constructeur par defaut invisible car hérité de la class parent Object
-  ManageStrike (Level level){
+  
+  ManageStrike (){
    strike = null;
    delayBeforeNextStrike = 0;
-   this.level=level;
   }
+  
   void manageStrike(Bob bob, ManageScore scoreManager,int strikeSpeed) {
     if (strike != null) {
       strike.update();
@@ -30,7 +29,5 @@ class ManageStrike {
       }
     }
   }
-  void setLevel(Level newLevel) {
-    this.level = newLevel;
-  }
+  
 }
