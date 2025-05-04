@@ -1,9 +1,9 @@
 class ManageStrike {
-  Strike strike ;
+  ArrayList<Strike> strikes;
   int delayBeforeNextStrike ;
   
   ManageStrike (){
-   strike = null;
+   strikes = new ArrayList<Strike>();
    delayBeforeNextStrike = 0;
   }
   

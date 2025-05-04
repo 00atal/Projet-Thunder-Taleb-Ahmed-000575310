@@ -94,10 +94,14 @@ class Bob {
     }
   }
   }
-void reset() {
-  x = width / 2;
-  y = height - 100; // ou une autre valeur adaptée à ta scène
-  speed = 0;
-  firstMove = false;
-}
+  void reset() {
+    x = width / 2;
+    y = height - 100; // ou une autre valeur adaptée à ta scène
+    speed = 0;
+    firstMove = false;
+  }
+
+  float getSlowSpeed(){
+    return slowSpeed;
+  }
 }

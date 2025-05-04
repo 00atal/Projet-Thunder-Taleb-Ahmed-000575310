@@ -32,13 +32,13 @@ void draw() {
 if (keyPressed) {
   if (key == '1') {
     level.setLevel(1);
-    println("1");
+    println("1"+bob.getSlowSpeed());
   } else if (key == '2') {
     level.setLevel(2);
-    println("2");
+    println("2"+bob.getSlowSpeed());
   } else if (key == '3') {
     level.setLevel(3);
-    println("3");
+    println("3"+bob.getSlowSpeed());
   }
 }
 
