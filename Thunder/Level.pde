@@ -1,5 +1,5 @@
 class Level {
-  int number;
+  int number=1;
   String name;
   float bobInertia;
   int strikeSpeed;

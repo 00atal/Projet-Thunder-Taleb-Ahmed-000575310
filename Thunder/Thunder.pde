@@ -22,7 +22,7 @@ void draw() {
   bob.moveManage(level.getBobInertia());
   bob.move(bob.speed);
   bob.limitPosition();
-  manageStrike.manageStrike(bob, scoreManager, level.getStrikeSpeed());
+  manageStrike.manageStrike(bob, scoreManager, level.getStrikeSpeed(),level.getNumber());
 
   if (strike != null && strike.hits(bob)) {
     displayManager.displayScore(scoreManager.getScore(), scoreManager.getHighScore());
@@ -33,11 +33,14 @@ void draw() {
   if (keyPressed) {
     if (key == '1') {
       level.setLevel(1);
+      manageStrike.addStrike(level.getNumber());
     } else if (key == '2') {
       level.setLevel(2);
+      manageStrike.addStrike(level.getNumber());
     } else if (key == '3') {
       level.setLevel(3);
+      manageStrike.addStrike(level.getNumber());
     }
   }
-  println(level.getNumber());
+  println(level.getNumber()+"  "+manageStrike.strikesSize());
 }
