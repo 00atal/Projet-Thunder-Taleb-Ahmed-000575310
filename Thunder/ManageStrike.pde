@@ -7,27 +7,43 @@ class ManageStrike {
    delayBeforeNextStrike = 0;
   }
   
-  void manageStrike(Bob bob, ManageScore scoreManager,int strikeSpeed) {
-    if (strike != null) {
+void manageStrike(Bob bob, ManageScore scoreManager, int strikeSpeed) {
+    if (strikes.size() < level.getMaxStrikes()) {
+      if (delayBeforeNextStrike == 0) {
+        strikes.add(new Strike(random(width), 0, strikeSpeed));
+        delayBeforeNextStrike = 60;
+      } else {
+        delayBeforeNextStrike--;
+      }
+    }
+
+    for (int i = 0; i < strikes.size(); i++) {
+      Strike strike = strikes.get(i);
       strike.update();
       strike.display();
-      
+
       if (strike.hits(bob)) {
-        scoreManager.resetScore();  
-        strike = null;
-        delayBeforeNextStrike = 60;
+        scoreManager.resetScore();
+        strikes.remove(i);
+        i--;
       } else if (strike.finished()) {
         scoreManager.setScore();
-        strike = null;
-        delayBeforeNextStrike = 60;
-      }
-    } else {
-      if (delayBeforeNextStrike > 0) {
-        delayBeforeNextStrike--;
-      } else if (random(1) < 0.05) {
-        strike = new Strike(random(width), 0, strikeSpeed);
+        strikes.remove(i);
+        i--;
       }
     }
   }
   
+void addStrikes(int nbStrikes) {
+  strikes.clear();
+  
+  for (int i = 0; i < nbStrikes; i++) {
+    strikes.add(new Strike(random(width), 0, level.getStrikeSpeed()));
+  }
+}
+
+  
+  int strikesSize(){
+    return strikes.size();
+  }
 }

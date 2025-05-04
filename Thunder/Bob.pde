@@ -55,11 +55,11 @@ class Bob {
     speed += deltaSpeed;
   }
 
-  void slowDown() {
+  void slowDown(float slow) {
   if (speed > 0) {
-    speed *= 0.98;
+    speed *= slow;
   } else if (speed < 0) {
-    speed *= 0.98;
+    speed *= slow;
   }
   if (abs(speed) < 0.1) {
     speed = 0;
@@ -76,7 +76,7 @@ class Bob {
     x = constrain(x, s / 2, width - s / 2);
   }
     
-  void moveManage(){
+  void moveManage(float slow){
     if (keyPressed) {
     if (keyCode == LEFT) {
       this.changeSpeed(-0.5);
@@ -87,7 +87,7 @@ class Bob {
     }
     } else {
     if (firstMove) {
-      this.slowDown();
+      this.slowDown(slow);
     } else {
       this.x=width / 2;
       this.speed=0;
