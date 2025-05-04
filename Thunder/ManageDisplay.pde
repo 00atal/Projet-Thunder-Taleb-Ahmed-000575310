@@ -5,9 +5,6 @@ class ManageDisplay {
     bgColor = color(169, 169, 169); 
   }
 
-  void setDangerBackground() {
-    bgColor = color(169, 0, 0); 
-  }
 
   void resetBackground() {
     bgColor = color(169, 169, 169);
@@ -52,5 +49,15 @@ class ManageDisplay {
     fill(255);
     textSize(24);
     text("Level: " + levelName, 10, 90); // Affiche le nom du niveau au centre
+  }
+  
+    void displayPlayerName(String playerName) {
+    fill(255);
+    textSize(24);
+    text("Player: " + playerName, 10, 120); // Affiche le nom du joueur en haut à gauche
+  }
+
+  void drawHighScoceOrder(){
+    
   }
 }

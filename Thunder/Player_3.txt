@@ -1,0 +1,2 @@
+Nom du joueur : teste
+Numéro du joueur : 3
