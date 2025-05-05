@@ -6,8 +6,8 @@ boolean firstMove = false;
 ManageDisplay displayManager;
 ManageScore scoreManager;
 int delayBeforeNextStrike = 0;
-Player player;
-
+Leaderboard lb;
+boolean isPaused = false;
 boolean isNameScreen = true;
 String inputName = "";
 
@@ -18,8 +18,15 @@ void setup() {
 void draw() {
   background(255);
 
+  // Écran de saisie du nom
   if (isNameScreen) {
     showNameScreen();
+    return;
+  }
+
+  // Si le jeu est en pause, on affiche les scores
+  if (isPaused) {
+    displayManager.drawHighScoceOrder();
     return;
   }
 
@@ -37,24 +44,9 @@ void draw() {
   }
 
   displayManager.displayLevelName(level.getName());
-
-  if (keyPressed) {
-    if (key == '1') {
-      level.setLevel(1);
-      manageStrike.addStrike(level.getNumber());
-    } else if (key == '2') {
-      level.setLevel(2);
-      manageStrike.addStrike(level.getNumber());
-    } else if (key == '3') {
-      level.setLevel(3);
-      manageStrike.addStrike(level.getNumber());
-    } else if (key == 'q' || key == 'Q') {
-      exit();
-    } else if (key == ' ') {
-      // Espace – futur affichage des scores ?
-    }
-  }
 }
+
+
 
 void showNameScreen() {
   fill(0);
@@ -68,20 +60,47 @@ void keyPressed() {
   if (isNameScreen) {
     if (key == ENTER || key == RETURN) {
       isNameScreen = false;
-      startGame(inputName);
+      startGame();
     } else if (key == BACKSPACE && inputName.length() > 0) {
       inputName = inputName.substring(0, inputName.length() - 1);
     } else if (key != CODED && key != ENTER && key != RETURN) {
       inputName += key;
     }
+  } else {
+    if (key == '1') {
+      level.setLevel(1);
+      manageStrike.addStrike(level.getNumber());
+      scoreManager.resetHighScore();
+    } else if (key == '2') {
+      level.setLevel(2);
+      manageStrike.addStrike(level.getNumber());
+      scoreManager.resetHighScore();
+    } else if (key == '3') {
+      level.setLevel(3);
+      manageStrike.addStrike(level.getNumber());
+      scoreManager.resetHighScore();
+    } else if (key == 'q' || key == 'Q') {
+      lb.addScore(inputName, level.getName(), 
+        year() + "-" + nf(month(), 2) + "-" + nf(day(), 2) + " " +
+        nf(hour(), 2) + ":" + nf(minute(), 2) + ":" + nf(second(), 2),
+        scoreManager.getHighScore());
+      exit();
+    } else if (key == ' ') {
+      isPaused = true; // Met le jeu en pause
+    } else if (key == 'b' || key == 'B') {
+      isPaused = false; // Reprend le jeu
+      println("Jeu repris !");
+    }
   }
 }
 
-void startGame(String name) {
+
+void startGame() {
   bob = new Bob(width / 2, height - 100, color(0, 20, 500), 50, 15, -20);
   displayManager = new ManageDisplay();
   scoreManager = new ManageScore();
   level = new Level(1); 
   manageStrike = new ManageStrike();
-  player = new Player(name);
+
+  lb= new Leaderboard("LeaderScore.txt");
 }
