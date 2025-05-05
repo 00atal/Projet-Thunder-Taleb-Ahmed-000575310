@@ -38,7 +38,6 @@ class GameManager {
       isPaused = true; // Met le jeu en pause
     } else if (key == 'b' || key == 'B') {
       isPaused = false; // Reprend le jeu
-      println("Jeu repris !");
     }
   }
   }

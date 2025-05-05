@@ -29,8 +29,8 @@ class ManageScore {
   void display() {
     fill(255);
     textSize(24);
-    text("Score : " + score, 10, 30);
-    text("High Score : " + highScore, 10, 60);
+    text("Score : " + score, 50, 30);
+    text("High Score : " + highScore, 50, 60);
   }
   // Réinitialise le high score à 0 (par exemple via un bouton "Reset")
   void resetHighScore(){

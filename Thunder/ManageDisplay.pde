@@ -48,22 +48,22 @@ class ManageDisplay {
   void displayScore(int score, int highScore) {
     fill(255);
     textSize(24);
-    text("Score : " + score, 10, 30);
-    text("High Score : " + highScore, 10, 60);
+    text("Score : " + score, 50, 30);
+    text("High Score : " + highScore, 50, 60);
   }
 
   // Affiche le nom du niveau actuel
   void displayLevelName(String levelName) {
     fill(255);
     textSize(24);
-    text("Level: " + levelName, 10, 90);
+    text("Level: " + levelName, 60, 90);
   }
 
   // Affiche le nom du joueur
   void displayPlayerName(String playerName) {
     fill(255);
     textSize(24);
-    text("Player: " + playerName, 10, 120);
+    text("Player: " + playerName, 50, 120);
   }
 
   // Fonction prévue pour dessiner les meilleurs scores (à implémenter)
