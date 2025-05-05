@@ -1,21 +1,22 @@
 class Leaderboard {
   ArrayList<String> scores;
   String filename;
-
+// Constructeur : initialise la liste des scores et le nom du fichier
   Leaderboard(String filename) {
     this.scores = new ArrayList<String>(); // Initialiser la liste des scores
     this.filename = filename; // Le nom du fichier pour stocker ou charger les scores
   }
-
+// Ajoute un nouveau score à la liste et le sauvegarde dans le fichier
   void addScore(String playerName, String lvl, String dateHour,int score ) {
-    scores.add(new String (playerName));
-    scores.add(new String (lvl));
-    scores.add(new String (dateHour));
-    scores.add(new String (""+score));
-    saveScore();
+    scores.add(new String (playerName));// Nom du joueur
+    scores.add(new String (lvl));// Nom du niveau
+    scores.add(new String (dateHour));// Date et heure du score
+    scores.add(new String (""+score)); // Score converti en chaîne
+    saveScore();// Sauvegarde les scores dans le fichier
   }
+   // Sauvegarde tous les scores dans le fichier en ajoutant la nouvelle entrée
 void saveScore() {
-  orderScore();
+  orderScore();// Trie les scores avant sauvegarde
   // Lire les anciennes lignes du fichier s'il existe
   String[] oldLines;
   try {
@@ -43,13 +44,7 @@ void saveScore() {
   saveStrings(filename, allLines);
 }
 
-
-
-  void displayScores() {
-
-  }
-  
- 
+   // Trie les scores en ordre décroissant (du plus haut au plus bas)
 void orderScore() {
   // Créer une structure temporaire pour contenir chaque entrée de score
   ArrayList<String[]> scoreEntries = new ArrayList<>();
@@ -77,12 +72,5 @@ void orderScore() {
     scores.add(entry[3]); // score
   }
 }
-
-
-
-
-
-
-
 
 }

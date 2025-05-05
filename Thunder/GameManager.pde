@@ -1,22 +1,25 @@
 class GameManager {
+  // Constructeur vide (aucune initialisation ici)
   GameManager(){
   }
-  
+   // Méthode appelée lorsqu'une touche est pressée
   void keyP(){
+        // Si l'on est encore sur l'écran de saisie du nom
       if (isNameScreen) {
+        // Si l'utilisateur appuie sur Entrée, on quitte l'écran de saisie
     if (key == ENTER || key == RETURN) {
       isNameScreen = false;
-      startGame();
-    } else if (key == BACKSPACE && inputName.length() > 0) {
+      startGame();// Démarre le jeu
+    } else if (key == BACKSPACE && inputName.length() > 0) {// Suppression d'un caractère avec la touche Retour arrière
       inputName = inputName.substring(0, inputName.length() - 1);
-    } else if (key != CODED && key != ENTER && key != RETURN) {
+    } else if (key != CODED && key != ENTER && key != RETURN) { // Ajoute le caractère saisi au nom (évite les touches spéciales)
       inputName += key;
-    }
+    }// Sinon, en jeu
   } else {
-    if (key == '1') {
+    if (key == '1') {// Sélection du niveau 1
       level.setLevel(1);
       manageStrike.addStrike(level.getNumber());
-      scoreManager.resetHighScore();
+      scoreManager.resetHighScore();// Réinitialise les meilleurs scores
     } else if (key == '2') {
       level.setLevel(2);
       manageStrike.addStrike(level.getNumber());
@@ -25,7 +28,7 @@ class GameManager {
       level.setLevel(3);
       manageStrike.addStrike(level.getNumber());
       scoreManager.resetHighScore();
-    } else if (key == 'q' || key == 'Q') {
+    } else if (key == 'q' || key == 'Q') {// Sauvegarde le score et quitte le jeu
       lb.addScore(inputName, level.getName(), 
         year() + "-" + nf(month(), 2) + "-" + nf(day(), 2) + " " +
         nf(hour(), 2) + ":" + nf(minute(), 2) + ":" + nf(second(), 2),
@@ -39,16 +42,17 @@ class GameManager {
     }
   }
   }
-  
+  // Initialise une nouvelle partie
   void startGame() {
-    bob = new Bob(width / 2, height - 100, color(0, 20, 500), 50, 15, -20);
-    displayManager = new ManageDisplay();
-    scoreManager = new ManageScore();
-    level = new Level(1); 
-    manageStrike = new ManageStrike();
-    lb = new Leaderboard("LeaderScore.txt");
+    bob = new Bob(width / 2, height - 100, color(0, 20, 500), 50, 15, -20);// Création du joueur
+    displayManager = new ManageDisplay();// Initialisation de l'affichage
+    scoreManager = new ManageScore(); // Initialisation du score
+    level = new Level(1); // Niveau de départ
+    manageStrike = new ManageStrike();// Gestion des frappes
+    lb = new Leaderboard("LeaderScore.txt");// Chargement du fichier de scores
   }
   
+    // Met à jour l'écran de jeu (appelé à chaque frame)
   void updateGameScreen() {
     background(255);  // Réinitialisation de l'arrière-plan à blanc
 

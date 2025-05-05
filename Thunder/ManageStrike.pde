@@ -12,7 +12,7 @@ class ManageStrike {
 
   // Gère l'apparition, l'affichage, et les collisions des éclairs
   void manageStrike(Bob bob, ManageScore scoreManager, int strikeSpeed, int nbStrikes) {
-    // Génère de nouveaux éclairs s’il n’y a pas de délai
+    // Génère de nouveaux éclairs s'il n'y a pas de délai
     if (delayBeforeNextStrike == 0) {
       for (int i = 0; i < nbStrikes; i++) {
         // Crée un nouvel éclair à une position horizontale aléatoire
@@ -33,18 +33,18 @@ class ManageStrike {
       if (strike.hits(bob)) {
         scoreManager.resetScore();
         strikes.remove(i);
-        i--; // Corriger l’index après suppression
+        i--; // Corriger l'index après suppression
       }
-      // Si l’éclair est sorti de l’écran sans toucher Bob, on augmente le score
+      // Si l'éclair est sorti de l'écran sans toucher Bob, on augmente le score
       else if (strike.finished()) {
         scoreManager.setScore();
         strikes.remove(i);
-        i--; // Corriger l’index après suppression
+        i--; // Corriger l'index après suppression
       }
     }
   }
 
-  // Ajoute un nombre donné d’éclairs (par exemple après un reset)
+  // Ajoute un nombre donné d'éclairs (par exemple après un reset)
   void addStrike(int nbStrikes) {
     strikes.clear(); // Supprime tous les éclairs actuels
     for (int i = 0; i < nbStrikes; i++) {
@@ -52,7 +52,7 @@ class ManageStrike {
     }
   }
 
-  // Renvoie le nombre d’éclairs actifs
+  // Renvoie le nombre d'éclairs actifs
   int strikesSize() {
     return strikes.size();
   }

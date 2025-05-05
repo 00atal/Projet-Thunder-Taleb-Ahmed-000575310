@@ -1,12 +1,12 @@
 class Strike {
-  // Coordonnées de départ et d’arrivée du segment de l’éclair
+  // Coordonnées de départ et d'arrivée du segment de l'éclair
   float x1, y1, x2, y2;
-  // Position actuelle de l’extrémité de l’éclair
+  // Position actuelle de l'extrémité de l'éclair
   float current_x, current_y;
   float progress;
   int strike_speed;
 
-  // Segment suivant de l’éclair (pour créer des ramifications)
+  // Segment suivant de l'éclair (pour créer des ramifications)
   Strike nextStrike;
 
   // Constructeur
@@ -26,10 +26,10 @@ class Strike {
     current_y = y1;
   }
 
-  // Mise à jour de l’éclair et de ses éventuelles ramifications
+  // Mise à jour de l'éclair et de ses éventuelles ramifications
   void update() {
     if (nextStrike == null) {
-      progress(); // fait avancer l’éclair principal
+      progress(); // fait avancer l'éclair principal
       if (random(1) < 0.05) {
         // 5% de chance de créer une ramification à chaque frame
         nextStrike = new Strike(current_x, current_y, strike_speed);
@@ -39,14 +39,14 @@ class Strike {
     }
   }
 
-  // Fait descendre l’éclair vers y2 avec interpolation de x
+  // Fait descendre l'éclair vers y2 avec interpolation de x
   void progress() {
     current_y += strike_speed;
     current_y = constrain(current_y, 0, y2);
     current_x = x2 + (x1 - x2) * (current_y - y2) / (y1 - y2);
   }
 
-  // Affichage de l’éclair
+  // Affichage de l'éclair
   void display() {
     stroke(255, 255, 0); // couleur jaune
     strokeWeight(3);
@@ -58,18 +58,18 @@ class Strike {
     }
   }
 
-  // Indique si l’éclair est arrivé à destination (ou si toutes ses branches le sont)
+  // Indique si l'éclair est arrivé à destination (ou si toutes ses branches le sont)
   boolean finished() {
     return current_y == y2 || (nextStrike != null && nextStrike.finished());
   }
 
-  // Vérifie si l’éclair touche Bob (collision circulaire)
+  // Vérifie si l'éclair touche Bob (collision circulaire)
   boolean hits(Bob bob) {
     return (dist(bob.x, bob.y, current_x, current_y) < 0.7 * bob.s) || 
            (nextStrike != null && nextStrike.hits(bob));
   }
 
-  // Permet de modifier dynamiquement la vitesse d’un éclair
+  // Permet de modifier dynamiquement la vitesse d'un éclair
   void setStrikeSpeed(int newStrikeSpeed) {
     this.strike_speed = newStrikeSpeed;
   }
