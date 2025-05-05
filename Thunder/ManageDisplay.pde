@@ -117,4 +117,12 @@ class ManageDisplay {
   textSize(16);
   text("Appuie sur 'B' pour retourner au jeu", width / 2, height - 30);
   }
+  
+    void showNameScreen(String inputName) {
+    fill(0);
+    textSize(24);
+    textAlign(LEFT);
+    text("Entrez votre nom et appuyez sur Entrée :", 100, height / 2 - 40);
+    text(inputName + "|", 100, height / 2);
+  }
 }
